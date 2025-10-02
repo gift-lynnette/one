@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About - Berwick Manor</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Epilogue', sans-serif;
+        background-color: #221810;
+        color: #e5e5e5;
+        position: relative;
+        min-height: 100vh;
+      }
+      
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.8) 100%
+          ),
+          url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyHdq7s7PNIaaO9KRauWujeWvRvd5BgmqRpMQN3sqoONZZP4vWVTPabd_p7fwXcO5WHMe_CDHUVT4QaROuom7u4cc5j1vQhoX04TUDMPSL9i-j1wouAG4Bm2Deq9y0R9aaH2hjiA-BRO3PmQNpfLBJFyyNrf0BiJBKuZYxwUqD8pPMR8r9Yxcs_-xc7LQZ0vKMnncqzXF0AL-pUEakWI2u5D11T8BIChkcVkQPtfG2ehPLHB-kP2dLuJyuJEl-2V0GJBT0KjbENvc");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* ---------------------------------- */
+      /* ----------- HEADER STYLES -------- */
+      /* ---------------------------------- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 0.5rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+      }
+
+      .logo h2 {
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav a:hover {
+        color: #f89a20;
+      }
+
+      .nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #f89a20;
+        transition: width 0.3s ease;
+      }
+
+      .nav a:hover::after {
+        width: 100%;
+      }
+
+      .book-now a {
+        background: linear-gradient(45deg, #f89a20, #ff6b35);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(248, 154, 32, 0.3);
+      }
+
+      .book-now a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(248, 154, 32, 0.5);
+      }
+
+      .bar {
+        display: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 70px;
+      }
+      
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 800px;
+        padding: 0 20px;
+      }
+      
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      
+      .hero-text {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #b0b0b0;
+      }
+      
+      /* Main Content */
+      .main-content {
+        padding: 80px 0;
+      }
+      
+      .content-section {
+        margin-bottom: 80px;
+      }
+      
+      /* Info Section */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      
+      .info-item {
+        padding: 20px;
+      }
+      
+      .info-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d46211;
+        margin-bottom: 20px;
+      }
+      
+      .info-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #b0b0b0;
+      }
+      
+      /* Values Section */
+      .values-section {
+        text-align: center;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #fff;
+        text-align: center;
+      }
+      
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: #b0b0b0;
+        margin-bottom: 60px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+      
+      .value-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 40px 30px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: left;
+      }
+      
+      .value-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      .value-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d46211;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .value-icon {
+        margin-right: 10px;
+        font-size: 2rem;
+      }
+      
+      .value-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #b0b0b0;
+      }
+      
+      /* Testimonials Section */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .testimonial-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      
+      .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      
+      .testimonial-info {
+        flex: 1;
+      }
+      
+      .testimonial-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      
+      .testimonial-date {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 10px;
+      }
+      
+      .testimonial-stars {
+        display: flex;
+        gap: 2px;
+      }
+      
+      .star {
+        color: #d46211;
+        font-size: 1.2rem;
+      }
+      
+      .star-empty {
+        color: #555;
+      }
+      
+      .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #b0b0b0;
+        font-style: italic;
+      }
+      
+      /* Statistics Section */
+      .stats-section {
+        text-align: center;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+      }
+      
+      .stat-item {
+        padding: 30px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .stat-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #d46211;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .stat-label {
+        font-size: 1.2rem;
+        color: #b0b0b0;
+      }
+      
+      .plus-sign {
+        font-size: 2.5rem;
+        color: #d46211;
+        margin-left: 5px;
+      }
+      
+      /* ---------------------------------- */
+      /* ----------- FOOTER STYLES -------- */
+      /* ---------------------------------- */
+      .footer {
+        background: linear-gradient(135deg, #1a1a1a, #000);
+        padding: 3rem 0 1rem;
+        margin-top: 0;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-left h3,
+      .footer-links h3,
+      .footer-social h3 {
+        color: #f89a20;
+        margin-bottom: 1rem;
+      }
+
+      .footer-left p,
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #f89a20;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-logo {
+        height: 40px;
+        margin-bottom: 1rem;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icons a {
+        color: #ccc;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: #f89a20;
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid #333;
+        color: #ccc;
+      }
+      
+      /* ---------------------------------- */
+      /* ----------- RESPONSIVE MEDIA QUERIES -------- */
+      /* ---------------------------------- */
+
+      @media (max-width: 992px) {
+        .info-grid,
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .hero-title {
+          font-size: 2.8rem;
+        }
+        
+        /* Header Responsive Styles */
+        .bar {
+          display: block;
+        }
+        
+        .nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.98);
+          padding: 1rem 0;
+          backdrop-filter: blur(10px);
+          animation: slideDown 0.3s ease;
+        }
+        
+        .nav.active {
+          display: block;
+        }
+        
+        .nav ul {
+          flex-direction: column;
+          gap: 1.5rem;
+          padding: 0 2rem;
+        }
+        
+        .nav li {
+          text-align: center;
+        }
+
+        /* Footer Responsive Styles */
+        .footer-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2rem;
+        }
+        
+        .social-icons {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          height: 60vh;
+        }
+        
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        
+        .section-title {
+          font-size: 2rem;
+        }
+        
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .info-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .stat-number {
+          font-size: 2.8rem;
+        }
+        
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        
+        .section-title {
+          font-size: 1.8rem;
+        }
+        
+        .header-container {
+          padding: 0 1rem;
+        }
+        
+        .footer-container {
+          padding: 0 1rem;
+        }
+      }
+
+      /* Navigation slide animation for mobile menu */
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <img src="images/Logo orange.png" alt="Logo">
+          <!-- <h2>Berwick Manor</h2> -->
+        </div>
+
+        <nav class="nav" id="navMenu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="book-now">
+          <a href="https://www.opentable.co.uk/r/berwick-manor-lounge-reservations-rainham?restref=444399&lang=en-GB&ot_source=Restaurant%20website">Book Now</a>
+        </div>
+
+        <i class="fa-solid fa-bars bar" id="hamburger"></i>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">About Berwick Manor</h1>
+            <p class="hero-text">
+                Berwick Manor is more than just a restaurant and shisha lounge; it's
+                a destination where culinary excellence meets a vibrant social
+                atmosphere. Our story began with a vision to create a space where
+                guests could savor exquisite dishes, enjoy premium shisha, and
+                create lasting memories in an elegant setting.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Info Section -->
+            <section class="content-section">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h2 class="info-title">Our Story</h2>
+                        <p class="info-text">
+                            Founded in 2018, Berwick Manor was born from a passion for
+                            fine dining and a desire to offer a unique experience. We
+                            envisioned a place where the art of cooking is celebrated
+                            alongside the tradition of shisha, all within an ambiance that
+                            exudes sophistication and warmth.
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <h2 class="info-title">Our Mission</h2>
+                        <p class="info-text">
+                            To provide an unparalleled dining and leisure experience. We
+                            are committed to using the freshest ingredients, crafting
+                            innovative dishes, and delivering exceptional service. We aim
+                            to create a welcoming environment where every guest feels
+                            valued and leaves with a desire to return.
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <h2 class="info-title">Our Values</h2>
+                        <p class="info-text">
+                            Guided by quality, creativity, and community, we are dedicated
+                            to continuous improvement, embracing innovation, and fostering
+                            a culture of respect and collaboration among our team and
+                            guests.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Values Section -->
+            <section class="content-section values-section">
+                <h2 class="section-title">Our Values</h2>
+                <p class="section-subtitle">The principles that guide everything we do at Berwick Manor</p>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <h3 class="value-title">
+                            <span class="material-symbols-outlined value-icon">grade</span>
+                            Quality
+                        </h3>
+                        <p class="value-text">
+                            We never compromise on quality, from our ingredients to our service. Every detail matters.
+                        </p>
+                    </div>
+                    <div class="value-item">
+                        <h3 class="value-title">
+                            <span class="material-symbols-outlined value-icon">auto_awesome</span>
+                            Creativity
+                        </h3>
+                        <p class="value-text">
+                            Our menu is constantly evolving with innovative dishes and unique shisha flavors.
+                        </p>
+                    </div>
+                    <div class="value-item">
+                        <h3 class="value-title">
+                            <span class="material-symbols-outlined value-icon">diversity_3</span>
+                            Community
+                        </h3>
+                        <p class="value-text">
+                            We believe in fostering connections between our team, guests, and the local community.
+                        </p>
+                    </div>
+                    <div class="value-item">
+                        <h3 class="value-title">
+                            <span class="material-symbols-outlined value-icon">favorite</span>
+                            Passion
+                        </h3>
+                        <p class="value-text">
+                            Our team is driven by genuine passion for hospitality, creating memorable experiences.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section class="content-section">
+                <h2 class="section-title">What Our Guests Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img
+                                alt="Sophia Bennett"
+                                class="testimonial-avatar"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLBy5iTh3SJkHUfWDFA_3i95ZHr4BXFCY5tsrwCe7r8RVWLWQKtrHBmKkASg3gsWGDKEmm-VgK1JjjjHYGwbr56sDbWN-ufgKxhZpeoU1GsIT-qFtEXmvP5wUiGY9u_MJSmDMIkBGcVhz2ZFQEdFnRb9jU-qZl7OY-UR75RmDJc_NYjPmwmuz-YtFTtbKdUxHaUHBi1WX_KiaPlA0zz6JQrc_7F81_eb2GaqiodPdSIQcraDI5fDv2yLBCHVYx3kZRD1TiAohaIg4"
+                            />
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">Sophia Bennett</p>
+                                <p class="testimonial-date">2 months ago</p>
+                                <div class="testimonial-stars">
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Berwick Manor is a gem! The food is delicious, the shisha
+                            is top-notch, and the atmosphere is perfect for a night out.
+                            Highly recommend!"
+                        </p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img
+                                alt="Ethan Carter"
+                                class="testimonial-avatar"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZpAuMjftQamyVzxgPG-B1BZjg7f3-T0HK6-mWO8-L-Cc9oHz10Xln-Cw3fn6F0HAaAFHGvXb2IS5q_038uuMt1OxmERdSjkYxmA08GbxR--K_pTGbxnPiMCVQ_cXWDP4GpJ_YJi7z3zc2qmIVYszSTpLHltpNbF9JdeaZRY8EKPWKiAubpVZu8rv_oHqDNBAX3hApSzr5Cr8_-oyeybF-30w6agVRK0t-dZt_i07_HY3F1cxQ32Dv-gWqKP2O_LLZokxr15r8wCg"
+                            />
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">Ethan Carter</p>
+                                <p class="testimonial-date">3 months ago</p>
+                                <div class="testimonial-stars">
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star">star</span>
+                                    <span class="material-symbols-outlined star star-empty">star</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Great experience overall. The service was excellent, and
+                            the ambiance was very inviting. The food was good, but the
+                            shisha was the highlight."
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Statistics Section (Now at the end) -->
+            <section class="content-section stats-section">
+                <h2 class="section-title">Our Growing Success</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="years">7</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="customers">50<span class="plus-sign">+</span></div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="flavors">15<span class="plus-sign">+</span></div>
+                        <div class="stat-label">Shisha Flavors</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="menu">100<span class="plus-sign">+</span></div>
+                        <div class="stat-label">Menu Items</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="images/Logo orange.png" alt="Footer Logo" class="footer-logo">
+          <h3>Berwick Manor</h3>
+          <p>
+            Experience dining and shisha in a luxurious and unforgettable setting.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="reservations.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2025 Berwick Manor. All Rights Reserved.
+      </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+        });
+
+        // Header background change on scroll functionality
+        window.addEventListener('scroll', () => {
+          const header = document.querySelector('header');
+          if (window.scrollY > 100) {
+            header.style.background = 'rgba(0, 0, 0, 0.98)';
+          } else {
+            header.style.background = 'rgba(0, 0, 0, 0.95)';
+          }
+        });
+
+        // Configuration for each counter
+        const counters = {
+            years: {
+                element: document.getElementById('years'),
+                value: 7,
+                increment: 0.05,
+                hasPlus: false
+            },
+            customers: {
+                element: document.getElementById('customers'),
+                value: 50,
+                increment: 0.2,
+                hasPlus: true
+            },
+            flavors: {
+                element: document.getElementById('flavors'),
+                value: 15,
+                increment: 0.1,
+                hasPlus: true
+            },
+            menu: {
+                element: document.getElementById('menu'),
+                value: 100,
+                increment: 0.3,
+                hasPlus: true
+            }
+        };
+        
+        // Animation speed (milliseconds between updates)
+        let animationSpeed = 50;
+        
+        // Function to update all counters
+        function updateCounters() {
+            for (const key in counters) {
+                const counter = counters[key];
+                
+                // Increase the value
+                counter.value += counter.increment;
+                
+                // Format the number (remove decimals)
+                let displayValue = Math.floor(counter.value);
+                
+                // Add commas for thousands
+                displayValue = displayValue.toLocaleString();
+                
+                // Update the element
+                counter.element.innerHTML = displayValue + (counter.hasPlus ? '<span class="plus-sign">+</span>' : '');
+            }
+            
+            // Schedule next update
+            setTimeout(updateCounters, animationSpeed);
+        }
+        
+        // Start the animation when page loads
+        window.addEventListener('load', updateCounters);
+    </script>
+</body>
+</html>

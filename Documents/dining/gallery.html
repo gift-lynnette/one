@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berwick Manor - Dining & Shisha Experience</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+/* ---------------------------------- */
+/* ----------- HEADER STYLES -------- */
+/* ---------------------------------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav a:hover {
+  color: #f89a20;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f89a20;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.book-now a {
+  background: linear-gradient(45deg, #f89a20, #ff6b35);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(248, 154, 32, 0.3);
+}
+
+.book-now a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(248, 154, 32, 0.5);
+}
+
+.bar {
+  display: none; /* Hidden by default on desktop */
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ---------------------------------- */
+/* ----------- HERO SECTION --------- */
+/* ---------------------------------- */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding-top: 80px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(45deg, #f89a20, #ff6b35);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(248, 154, 32, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(248, 154, 32, 0.5);
+  color: white;
+}
+
+/* ---------------------------------- */
+/* ----------- BOOK GALLERY --------- */
+/* ---------------------------------- */
+:root {
+  --primary-color: #FF8C00; /* Dark Orange */
+  --secondary-color: #FFA500; /* Orange */
+  --navy-blue: #000080;
+  --white: #ffffff;
+  --off-white: #f8f9fa;
+}
+
+.book-gallery-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+  position: relative;
+}
+
+.book-container {
+  position: relative;
+  margin: 0;
+  padding: 50px 10px; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80") no-repeat center center;
+  background-size: cover; 
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+.section-title {
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title span {
+  color: var(--primary-color);
+}
+
+/* The Flippable Book (Desktop/Tablet Defaults) */
+.book {
+  width: 550px; 
+  height: 600px;
+  position: relative;
+  transition-duration: 1s;
+  perspective: 2000;
+  z-index: 1; 
+}
+
+.input { display: none; }
+
+/* Book Covers */
+.cover, .back-cover {
+  background-color: rgb(179, 179, 222);
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover label {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.cover {
+  position: absolute;
+  transform-origin: center left;
+  transition: transform 1.5s;
+  z-index: 7;
+}
+.cover-text {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  color: var(--primary-color);
+  transform: translateX(-50%);
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Individual Pages */
+.page {
+  position: absolute;
+  background: var(--white);
+  color: #000;
+  width: 96%; 
+  height: 96%;
+  margin-top: 2%; 
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition-duration: 1.5s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix for front page images - right side */
+.front-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 15px 15px 0;
+  overflow: hidden;
+}
+
+/* Fix for back page images - left side */
+.back-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  border-radius: 15px 0 0 15px;
+  overflow: hidden;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* Navigation Arrows */
+.next, .prev {
+  position: absolute;
+  top: 50%;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgba(255, 140, 0, 0.7);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 100;
+}
+.next { right: 5px; } 
+.prev { left: 5px; } 
+
+/* Close Book Button Styling */
+.close-book-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--navy-blue);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 9999;
+}
+.close-book-btn:hover {
+  background-color: #FF6347;
+  color: white;
+}
+
+/* Go to Start Button Styling */
+.go-to-start-btn {
+  position: absolute;
+  top: 10px; 
+  right: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+  z-index: 101;
+}
+.go-to-start-btn:hover {
+  background-color: var(--navy-blue);
+}
+
+/* Initial Z-index stacking (Cover on top) */
+#page1 { z-index: 6; }
+#page2 { z-index: 5; }
+#page3 { z-index: 4; }
+#page4 { z-index: 3; } 
+#page5 { z-index: 2; } 
+#page6 { z-index: 1; } 
+
+/* DESKTOP/TABLET FLIP LOGIC */
+#checkbox-cover:checked ~ .book { 
+  transform: translateX(275px); /* Adjusted value for centering the open spread */
+}
+#checkbox-cover:checked ~ .book .cover {
+  transition: transform 1.5s, z-index 0.5s 0.5s;
+  transform: rotateY(-180deg);
+  z-index: 0; 
+}
+
+/* Flip logic for subsequent pages */
+#checkbox-page1:checked ~ .book #page1 { transform: rotateY(-180deg); z-index: 8; }
+#checkbox-page2:checked ~ .book #page2 { transform: rotateY(-180deg); z-index: 9; }
+#checkbox-page3:checked ~ .book #page3 { transform: rotateY(-180deg); z-index: 10; }
+#checkbox-page4:checked ~ .book #page4 { transform: rotateY(-180deg); z-index: 11; }
+#checkbox-page5:checked ~ .book #page5 { transform: rotateY(-180deg); z-index: 12; }
+#checkbox-page6:checked ~ .book #page6 { transform: rotateY(-180deg); z-index: 13; }
+
+.heading {
+  position: relative; 
+  font-size: 50px;
+  color: var(--primary-color); 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center; 
+  padding: 20px;
+}
+
+/* ---------------------------------- */
+/* ----------- FOOTER STYLES -------- */
+/* ---------------------------------- */
+.footer {
+  background: linear-gradient(135deg, #1a1a1a, #000);
+  padding: 3rem 0 1rem;
+  margin-top: 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.footer-left h3,
+.footer-links h3,
+.footer-social h3 {
+  color: #f89a20;
+  margin-bottom: 1rem;
+}
+
+.footer-left p,
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #f89a20;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+  height: 40px;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f89a20;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  color: #ccc;
+}
+
+/* ---------------------------------- */
+/* ----------- RESPONSIVE MEDIA QUERIES -------- */
+/* ---------------------------------- */
+
+@media (max-width: 768px) {
+  /* Header Responsive Styles */
+  .bar {
+    display: block; /* Show hamburger icon */
+  }
+  
+  .nav {
+    display: none; /* Hide nav by default on mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.98);
+    padding: 1rem 0;
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.3s ease;
+  }
+  
+  .nav.active {
+    display: block; /* Show nav when 'active' class is added by JS */
+  }
+  
+  .nav ul {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 2rem;
+  }
+  
+  .nav li {
+    text-align: center;
+  }
+
+  /* Hero Section Responsive */
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  /* Book Gallery Responsive */
+  .book {
+    width: 90vw; 
+    height: 90vw; 
+  }
+  
+  .page {
+    width: 98%; 
+    height: 98%;
+    margin-top: 1%; 
+  }
+  
+  .front-page {
+    border-radius: 0 10px 10px 0;
+  }
+  
+  .back-page {
+    border-radius: 10px 0 0 10px;
+  }
+  
+  /* MOBILE FIX: Ensure translation is 0 on mobile screens */
+  #checkbox-cover:checked ~ .book {
+    transform: translateX(0) !important; 
+  }
+  
+  .heading {
+    font-size: 20px; 
+    padding: 10px;
+  }
+  
+  .next, .prev {
+    width: 25px;
+    height: 25px;
+    font-size: 0.6rem;
+  }
+
+  .close-book-btn, .go-to-start-btn {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  /* Footer Responsive Styles */
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  .footer-container {
+    padding: 0 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Navigation slide animation for mobile menu */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="images/Logo orange.png" alt="Logo">
+    </div>
+
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <div class="book-now">
+      <a href="https://www.opentable.co.uk/r/berwick-manor-lounge-reservations-rainham?restref=444399&lang=en-GB&ot_source=Restaurant%20website">Book Now</a>
+    </div>
+
+    <i class="fa-solid fa-bars bar" id="hamburger"></i>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Berwick Manor</h1>
+    <p>Experience luxury dining and premium shisha in an unforgettable atmosphere</p>
+    <a href="#gallery" class="cta-button">Explore Our Gallery</a>
+  </div>
+</section>
+
+<!-- Book Gallery Section -->
+<section class="book-gallery-section" id="gallery">
+  <h2 class="section-title">Our <span>Gallery</span></h2>
+  
+  <div class="book-container">
+    <div class="dark-overlay"></div>
+    
+    <input class="input" type="checkbox" id="checkbox-cover" />
+    <input class="input" type="checkbox" id="checkbox-page1" />
+    <input class="input" type="checkbox" id="checkbox-page2" />
+    <input class="input" type="checkbox" id="checkbox-page3" />
+    <input class="input" type="checkbox" id="checkbox-page4" />
+    <input class="input" type="checkbox" id="checkbox-page5" />
+    <input class="input" type="checkbox" id="checkbox-page6" />
+    
+    <div class="book">
+      <div class="cover">
+        <label for="checkbox-cover"></label>
+        <div class="cover-text"> Click to Open</div>
+      </div>
+      
+      <div class="page" id="page1">
+        <div class="front-page">
+          <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Brunch Image" /> 
+          <h1 class="heading" style="position: absolute; top: 50%; transform: translateY(-50%);"> Our Dining & Shisha Experience</h1>
+          <label class="next" for="checkbox-page1"><i class="fas fa-chevron-right"></i></label>
+        </div>
+        <div class="back-page">
+          <img src="https://images.unsplash.com/photo-1572119865084-43d6c53d2d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cocktails Image" /> 
+          <label class="prev" for="checkbox-cover"><i class="fas fa-chevron-left"></i></label>
+        </div>
+      </div>
+      
+      <div class="page" id="page2">
+        <div class="front-page">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Food Image" />
+          <label class="next" for="checkbox-page2"><i class="fas fa-chevron-right"></i></label>
+          <button class="go-to-start-btn" onclick="goToFirstPage()">
+            <i class="fas fa-home"></i> Prev
+          </button>
+        </div>
+        <div class="back-page">
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Alcohol Image" />
+          <label class="prev" for="checkbox-page1"><i class="fas fa-chevron-left"></i></label>
+        </div>
+      </div>
+      
+      <div class="page" id="page3">
+        <div class="front-page">
+          <img src="https://images.unsplash.com/photo-1579586337278-3f436c8e9394?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Shisha Image" />
+          <label class="next" for="checkbox-page3"><i class="fas fa-chevron-right"></i></label>
+          <button class="go-to-start-btn" onclick="goToFirstPage()">
+            <i class="fas fa-home"></i> Prev
+          </button>
+        </div>
+        <div class="back-page">
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Plated Food Image" />
+          <label class="prev" for="checkbox-page2"><i class="fas fa-chevron-left"></i></label>
+        </div>
+      </div>
+      
+      <div class="page" id="page4">
+        <div class="front-page">
+          <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dessert Image" />
+          <label class="next" for="checkbox-page4"><i class="fas fa-chevron-right"></i></label>
+          <button class="go-to-start-btn" onclick="goToFirstPage()">
+            <i class="fas fa-home"></i> Prev
+          </button>
+        </div>
+        <div class="back-page">
+          <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Ambiance Image" />
+          <label class="prev" for="checkbox-page3"><i class="fas fa-chevron-left"></i></label>
+        </div>
+      </div>
+
+      <div class="page" id="page5">
+        <div class="front-page">
+          <img src="https://images.unsplash.com/photo-1572119865084-43d6c53d2d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Bar Image" />
+          <label class="next" for="checkbox-page5"><i class="fas fa-chevron-right"></i></label>
+          <button class="go-to-start-btn" onclick="goToFirstPage()">
+            <i class="fas fa-home"></i> Prev
+          </button>
+        </div>
+        <div class="back-page">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Specialty Dish Image" />
+          <label class="prev" for="checkbox-page4"><i class="fas fa-chevron-left"></i></label>
+        </div>
+      </div>
+
+      <div class="page" id="page6">
+        <div class="front-page">
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Final Food Image" />
+          <label class="next" for="checkbox-page6" style="visibility: hidden;"></label> 
+          <button class="go-to-start-btn" onclick="goToFirstPage()">
+            <i class="fas fa-home"></i> Prev
+          </button>
+        </div>
+        <div class="back-page">
+          <img src="https://images.unsplash.com/photo-1579586337278-3f436c8e9394?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Final Shisha Image" />
+          <label class="prev" for="checkbox-page5"><i class="fas fa-chevron-left"></i></label>
+
+          <button class="close-book-btn" onclick="closeBook()">
+            <i class="fas fa-book"></i> Close Book
+          </button>
+        </div>
+      </div>
+      
+      <div class="back-cover"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="images/Logo orange.png" alt="Footer Logo" class="footer-logo">
+      <h3>Berwick Manor</h3>
+      <p>
+        Experience dining and shisha in a luxurious and unforgettable setting.
+      </p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 Berwick Manor. All Rights Reserved.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Initialize AOS
+AOS.init({ once: true, duration: 1000, easing: 'ease-in-out' });
+
+// Mobile menu toggle functionality
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+});
+
+// Header background change on scroll functionality
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  if (window.scrollY > 100) {
+    header.style.background = 'rgba(0, 0, 0, 0.98)';
+  } else {
+    header.style.background = 'rgba(0, 0, 0, 0.95)';
+  }
+});
+
+/**
+ * Closes the book completely by unchecking the cover and all page checkboxes.
+ */
+function closeBook() {
+  document.getElementById('checkbox-cover').checked = false;
+  
+  for (let i = 1; i <= 6; i++) {
+    const checkbox = document.getElementById(`checkbox-page${i}`);
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  }
+}
+
+/**
+ * Navigates back to the first content page (#page1).
+ */
+function goToFirstPage() {
+  document.getElementById('checkbox-cover').checked = true;
+
+  for (let i = 2; i <= 6; i++) {
+    const checkbox = document.getElementById(`checkbox-page${i}`);
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  }
+  document.getElementById('checkbox-page1').checked = false;
+}
+
+// Script to set the 'for' attribute for the back buttons 
+const pageCount = 6;
+for (let i = 1; i <= pageCount; i++) {
+  const prevLabel = document.querySelector(`#page${i} .back-page .prev`);
+  if (prevLabel) {
+    if (i === 1) {
+      prevLabel.setAttribute('for', 'checkbox-cover'); 
+    } else {
+      prevLabel.setAttribute('for', `checkbox-page${i - 1}`); 
+    }
+  }
+}
+</script>
+
+</body>
+</html>
