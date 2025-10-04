@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berwick Dining & Shisha Lounge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #f89a20;
+            --secondary: #1a1a1a;
+            --accent: #8b0000;
+            --light: #f8f8f8;
+            --dark: #121212;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            padding: 80px 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--primary);
+            margin: 15px auto;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #f89a20, #ff6b35);
+            color: var(--dark);
+            text-decoration: none;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 25px;
+        }
+
+        .btn:hover {
+            /* background: #ffae42; */
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(248, 154, 32, 0.3);
+        }
+
+        .btn-accent {
+            background: linear-gradient(45deg, #f89a20, #ff6b35);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            /* background:orange; */
+        }
+
+        /* ---------------------------------- */
+        /* ----------- HEADER STYLES -------- */
+        /* ---------------------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: #f89a20;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f89a20;
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .book-now a {
+            background: linear-gradient(45deg, #f89a20, #ff6b35);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(248, 154, 32, 0.3);
+        }
+
+        .book-now a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(248, 154, 32, 0.5);
+        }
+
+        .bar {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .hero .btn {
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-media {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .about-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-media:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu Preview */
+        .menu-preview {
+            background: var(--dark);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .item-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .item-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .item-overlay .price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Ambience Section */
+        .ambience {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #000;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .ambience-content {
+            max-width: 800px;
+            padding: 40px;
+            /* background: rgba(0, 0, 0, 0.7); */
+            border-radius: 10px;
+            color: white;
+        }
+
+        .ambience h2 {
+            color: var(--primary);
+        }
+
+        /* Offers Section */
+        .offers {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .offers-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .offer-card {
+            min-width: 300px;
+            background: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            transition: var(--transition);
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .offer-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .offer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .offer-card:hover .offer-img img {
+            transform: scale(1.1);
+        }
+
+        .offer-content {
+            padding: 20px;
+        }
+
+        .offer-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Modern Gallery Section */
+        .gallery {
+            background: var(--dark);
+            padding: 80px 5%;
+            color: white;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(248, 154, 32, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(248, 154, 32, 0.8));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .gallery-item:hover .gallery-overlay h3 {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay p {
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.2s;
+        }
+
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .testimonial-content {
+            background: var(--dark);
+            padding: 40px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .testimonial-content:before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--primary);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .customer-rating {
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .customer-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+        }
+
+        /* Reservation Section */
+        .reservation {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            color: white;
+        }
+
+        .reservation h2 {
+            color: var(--primary);
+        }
+
+        .reservation p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .reservation .btn {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(248, 154, 32, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(248, 154, 32, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(248, 154, 32, 0);
+            }
+        }
+
+        /* ----------- FOOTER STYLES -------- */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 3rem 0 1rem;
+            margin-top: 0;
+            color: white;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-left h3,
+        .footer-links h3,
+        .footer-social h3 {
+            color: #f89a20;
+            margin-bottom: 1rem;
+        }
+
+        .footer-left p,
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #f89a20;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: #ccc;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #f89a20;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            color: #ccc;
+        }
+
+        /* ----------- RESPONSIVE MEDIA QUERIES -------- */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-media {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Header Responsive Styles */
+            .bar {
+                display: block;
+            }
+            
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                padding: 1rem 0;
+                backdrop-filter: blur(10px);
+                animation: slideDown 0.3s ease;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 0 2rem;
+            }
+            
+            .nav li {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 5%;
+            }
+
+            /* Footer Responsive Styles */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            .footer-container {
+                padding: 0 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .about-media {
+                height: 300px;
+            }
+            
+            .menu-item {
+                height: 250px;
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+        }
+
+        /* Navigation slide animation for mobile menu */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/Logo orange.png" alt="Berwick Dining & Shisha Lounge">
+            </div>
+
+            <nav class="nav" id="navMenu">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </nav>
+
+            <div class="book-now">
+                <a href="https://www.opentable.co.uk/r/berwick-manor-lounge-reservations-rainham?restref=444399&lang=en-GB&ot_source=Restaurant%20website">Book Now</a>
+            </div>
+
+            <i class="fa-solid fa-bars bar" id="hamburger"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="https://www.pexels.com/download/video/9843437/" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Berwick Dining & Shisha Lounge</h1>
+            <p>Experience fine dining, premium shisha, and crafted cocktails in an ambient atmosphere</p>
+            <a href="#reservation" class="btn btn-accent">Book a Table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Welcome to Berwick</h2>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>At Berwick, we've created a sanctuary where culinary excellence meets sophisticated relaxation. Our chefs craft dishes that blend traditional flavors with modern techniques, while our shisha masters prepare the finest blends for an unforgettable experience.</p>
+                    <p>Whether you're joining us for an intimate dinner, celebrating a special occasion, or simply unwinding after a long day, our attentive staff and ambient atmosphere will ensure your visit is nothing short of exceptional.</p>
+                    <a href="#" class="btn">Explore Our Menu</a>
+                </div>
+                <div class="about-media">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1447&q=80" alt="Berwick Restaurant Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section class="menu-preview" id="menu">
+        <div class="container">
+            <h2>Signature Dishes & Shisha Flavors</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Truffle Pasta">
+                    <div class="item-overlay">
+                        <h3>Truffle Mushroom Pasta</h3>
+                        <span class="price">$24</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/piza.jpg" alt="Gourmet Pizza">
+                    <div class="item-overlay">
+                        <h3>Artisan Wood-Fired Pizza</h3>
+                        <span class="price">$18</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80" alt="Grilled Salmon">
+                    <div class="item-overlay">
+                        <h3>Grilled Salmon with Herbs</h3>
+                        <span class="price">$26</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/pot.jpg" alt="Shisha">
+                    <div class="item-overlay">
+                        <h3>Premium Shisha Selection</h3>
+                        <span class="price">From $15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambience Section -->
+    <section class="ambience">
+        <div class="ambience-content">
+            <h2>The Berwick Experience</h2>
+            <p>Step into an oasis of sophistication where ambient lighting, curated music, and exquisite flavors create the perfect backdrop for memorable evenings. Our lounge offers the ideal setting for social gatherings, romantic dates, or simply unwinding with premium shisha and crafted cocktails.</p>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="offers" id="events">
+        <div class="container">
+            <h2>Special Offers & Events</h2>
+            <div class="offers-container">
+                <div class="offer-card">
+                    <div class="offer-img">
+                        <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1386&q=80" alt="Happy Hour">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Happy Hour</h3>
+                        <p>Monday - Friday, 4PM - 7PM. Enjoy 50% off selected cocktails and appetizers.</p>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-img">
+                        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Shisha Nights">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Shisha Nights</h3>
+                        <p>Every Thursday. Live DJ, premium shisha flavors, and exclusive cocktail menu.</p>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-img">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Weekend Brunch">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Weekend Brunch</h3>
+                        <p>Saturday & Sunday, 11AM - 3PM. Bottomless mimosas and gourmet brunch selections.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-container">
+            <h2>Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Restaurant Interior">
+                    <div class="gallery-overlay">
+                        <h3>Ambient Dining</h3>
+                        <p>Experience our sophisticated dining area</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cock.jpg" alt="Cocktails">
+                    <div class="gallery-overlay">
+                        <h3>Crafted Cocktails</h3>
+                        <p>Our mixologists create unique beverages</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80" alt="Food">
+                    <div class="gallery-overlay">
+                        <h3>Gourmet Cuisine</h3>
+                        <p>Exquisite dishes prepared with care</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/pot.jpg" alt="Shisha">
+                    <div class="gallery-overlay">
+                        <h3>Premium Shisha</h3>
+                        <p>Relax with our premium shisha selection</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/lounge.jpg" alt="Lounge Area">
+                    <div class="gallery-overlay">
+                        <h3>Lounge Area</h3>
+                        <p>Comfortable seating for social gatherings</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/events.jpg" alt="Events">
+                    <div class="gallery-overlay">
+                        <h3>Special Events</h3>
+                        <p>Host your celebrations with us</p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="btn">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Guests Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <p>"The ambiance at Berwick is unmatched. The food was exquisite, and the shisha was the best I've had in the city. Will definitely be returning soon!"</p>
+                            <div class="customer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="customer-name">- Sarah J.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <p>"Perfect spot for date night! The cocktails were creative and delicious, and the staff went above and beyond to make our evening special."</p>
+                            <div class="customer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="customer-name">- Michael T.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <p>"I hosted my birthday party at Berwick and it was fantastic! The private area was beautiful, the food was amazing, and everyone loved the shisha selection."</p>
+                            <div class="customer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="customer-name">- Jessica L.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation -->
+    <section class="reservation" id="reservation">
+        <div class="container">
+            <h2>Ready for an Unforgettable Experience?</h2>
+            <p>Book your table today and immerse yourself in the Berwick atmosphere. Whether it's a romantic dinner, group celebration, or casual hangout, we'll make it memorable.</p>
+            <a href="#" class="btn btn-accent">Reserve Your Table</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="images/Logo orange.png" alt="Footer Logo" class="footer-logo">
+                <h3>Berwick Manor</h3>
+                <p>
+                    Experience dining and shisha in a luxurious and unforgettable setting.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 Berwick Manor. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Header background change on scroll functionality
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Testimonial Slider
+        const track = document.querySelector('.testimonial-track');
+        const slides = Array.from(track.children);
+        const dots = Array.from(document.querySelectorAll('.slider-dot'));
+        let currentSlide = 0;
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Auto slide
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+        }, 5000);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.about-text').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
